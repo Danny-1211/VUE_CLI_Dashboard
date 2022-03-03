@@ -1,0 +1,30 @@
+1. 環境建立 
+   =>VUE 專案、AXIOS、BOOTSTRAP5 
+2. 後台登入介面 LoginView.vue
+   => user : {username:'' , password:''} 用 v-model抓到輸入值並寫入
+   => 接 api 看看是否登入成功
+   => 登入成功 : 存取cookie方便驗證 登入失敗:顯示alert
+3. 驗證登入 
+   => dashboardHomePageView 後台首頁 (驗證token是否有效) 
+   => 利用一個變數(loginCheckStatus = false or true)決定 router-view會不會顯示畫面
+   => 透過 api check token是否合法有效，如果有效loginCheckStatus = true 即可顯示畫面
+   => const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1'); 
+      抓存在 cookie 的 token
+   => this.$http.defaults.headers.common.Authorization = `${myCookie}`; // 每次用api取得資料都自動帶入token
+   => 後台首頁驗證成功其他後台功能頁面就不用在驗證一次
+
+4. 後台產品頁面 productDashboardView.vue
+   => 先把抓取產品，渲染到畫面上
+   => Modal元件化 editOrAddModal.vue 
+
+5. 後台訂單頁面 orderDashboardView.vue
+
+6. 優惠卷頁面 couponDashboardView.vue
+
+7. 登出功能 logoutView.vue
+   => 多一個頁面抓api來做登出
+   => 成功就跳出alert 然後跳轉到 loginView.vue
+
+
+
+
