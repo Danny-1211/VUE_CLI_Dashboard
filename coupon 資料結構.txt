@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "coupons": [
+    {
+      "code": "testCode",
+      "due_date": 1555459200,
+      "id": "-MxeO0fsjT84ZRWc5Ivq",
+      "is_enabled": 1,
+      "percent": 80,
+      "title": "超級特惠價格",
+      "num": 1
+    }
+  ],
+  "pagination": {
+    "total_pages": 1,
+    "current_page": 1,
+    "has_pre": false,
+    "has_next": false,
+    "category": ""
+  },
+  "messages": []
+}

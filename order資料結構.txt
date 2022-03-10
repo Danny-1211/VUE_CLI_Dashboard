@@ -1,0 +1,26 @@
+"orders": [
+    {
+      "create_at": 1523539519,              // (建立日期)
+      "id": "-L9u11NAE0m0SpSBUDIq",         //(訂單ID)
+      "is_paid": false,          // (是否已付款)
+      "message": "這是留言",     // (留言)
+      "payment_method": "credit_card",      // (付款方式)
+
+      "products": {        // (產品資訊)
+        "L8nBrq8Ym4ARI1Kog4t": {  
+          "id": "L8nBrq8Ym4ARI1Kog4t",
+          "product_id": "-L8moRfPlDZZ2e-1ritQ",
+          "qty": "3"
+        }
+      },
+
+      "user": {          // (使用者資訊)
+        "address": "kaohsiung",
+        "email": "test@gmail.com",
+        "name": "test",
+        "tel": "0912346768"
+      },
+
+      "num": 2
+    }
+  ]

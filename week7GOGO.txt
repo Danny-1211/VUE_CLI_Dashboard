@@ -1,7 +1,7 @@
 1. 環境建立 
    =>VUE 專案、AXIOS、BOOTSTRAP5 
 2. 後台登入介面 LoginView.vue
-   => user : {username:'' , password:''} 用 v-model抓到輸入值並寫入
+   => user : {username:'' , password:''} 用 v-model 抓到輸入值並寫入
    => 接 api 看看是否登入成功
    => 登入成功 : 存取cookie方便驗證 登入失敗:顯示alert
 3. 驗證登入 
@@ -15,15 +15,61 @@
 
 4. 後台產品頁面 productDashboardView.vue
    => 先把抓取產品，渲染到畫面上
-   => Modal元件化 editOrAddModal.vue 
+   => Modal元件化 editOrAddModal.vue
+   => 將結構寫上去元件  
+   => 將Ｍodal實體化 bootstrap5方法 (目前使用 bootstarp5 透過資料屬性開啟modal 不知道怎麼 mounted 實體化哩)
+   => 成功打開!
+   => 編輯功能 ， modal 將產品資料先放上去 
+
+      資料傳遞想法流程 > 
+	1. 創立 props : ['tempData']
+	2. 按下編輯按鈕時，抓到那一列產品資訊
+		=> 寫一個 function saveTempData(參數為該列產品 item) 
+                => 新增一個變數 tempData: { imagesUrl: [] } 結構符合products產品資料結構
+		=> 並將該列產品資料賦予值給tempData
+ 		=> 問題 :  打開不同的產品編輯modal，資料不會更新
+		=> 猜測 : 在打開頁面的時候 modal 元件 ， 已經 mounted 一次了 ， 所以一開始沒點的話，變數也不會更新
+		=> 想法 : 試試看 watch 監聽 tempData 的值改變並同時賦予值給變數 
+		=> 成功! 
+
+	3. 在 modal 元件標籤使用 props 將產品資訊傳給 modal 元件
+	4. 避免單向數據流，新增一個變數將 props 抓到的值給元件新增的變數
+ 
+    => 修改圖片功能 ， v-on:click 使用 array 的方法 push 從後端新增一筆 跟 pop 從後端移除一筆
+    => 將修改的資料寫回去 api 
+	=> 寫一個 function updateProduct() 
+	=> 將寫完的資料寫回去 
+	=> 確認按下後 modal 關閉
+	=> 並在更新一次產品列表 用 emit 使用 根元件的 getproducts() function
+
+    => 新增資料功能 
+	=> 由於 建立新產品的資料並沒有執行將產品資料放入 modal 元件data 的function (saveTempData) 
+	=> 直接把 tempData 資料清空
+	=> 做一個判斷是按哪個按鈕來決定是建立新產品還是編輯產品
+	   => 寫一個 openModal function 判斷按了什麼按鈕， statusNumber 分別記錄不同功能
+	   => 寫一個 btnMethod 依據 statusNumber 執行不同功能，並用 refs 執行寫在元件上的method
+	   => 確認按鈕在 modal 上面所以 modal 元件用 emit 綁定根元件的 btnMethod  
+
+    => 刪除功能 deleteModal.vue
+
+    => 分頁功能 要記得將 a連結改成產品後台的路徑 
 
 5. 後台訂單頁面 orderDashboardView.vue
+   => 了解資料內容 
+   => 建立修改訂單Modal orderEditUserModal.vue
+   => 先抓到orders資訊並放到modal上面
+   => 編輯按鈕修改資料
+   => 刪除單筆訂單
+	
 
 6. 優惠卷頁面 couponDashboardView.vue
+   => 了解資料內容
+   => 列表跟優惠卷資料顯示
+   => 建立優惠卷功能 couponCreateModal.vue (明天繼續努力)
 
-7. 登出功能 logoutView.vue
-   => 多一個頁面抓api來做登出
-   => 成功就跳出alert 然後跳轉到 loginView.vue
+8. 登出功能 logoutView.vue
+   => 多一個頁面抓 api 來做登出124802029
+   => 成功就跳出 alert 然後跳轉到 loginView.vue
 
 
 
