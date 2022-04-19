@@ -75,6 +75,11 @@
                   </textarea>
                 </div>
                 <div class="mb-3">
+                  <label for="content" class="form-label">Youtube Video ID</label>
+                  <textarea id="description" type="text" class="form-control" v-model="tempdataModal.vid" placeholder="請輸入YoutubeID">
+                  </textarea>
+                </div>
+                <div class="mb-3">
                   <div class="form-check">
                     <input id="is_enabled" class="form-check-input" type="checkbox" v-model="tempdataModal.is_enabled">
                     <label class="form-check-label" for="is_enabled">是否啟用</label>

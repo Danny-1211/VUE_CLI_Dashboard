@@ -21,6 +21,7 @@ export default {
     loginCheck () {
       const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       this.$http.defaults.headers.common.Authorization = `${myCookie}`; // 每次用api取得資料都自動帶入token
+      console.log(myCookie);
       this.$http.post(`${process.env.VUE_APP_API}/api/user/check`, myCookie)
         .then(res => {
           this.loginCheckStatus = true;
